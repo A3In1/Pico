@@ -1,0 +1,143 @@
+.empty-state {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 24px;
+  padding: 40px;
+  text-align: center;
+  animation: fadeIn 0.4s ease;
+}
+
+.empty-state-settings {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: all var(--duration-normal) ease;
+}
+
+.empty-state-settings:hover {
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+  transform: rotate(30deg);
+}
+
+.empty-state-icon {
+  color: var(--text-tertiary);
+  opacity: 0.7;
+}
+
+.spinner {
+  animation: spin 1.5s linear infinite;
+}
+
+.empty-state-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 380px;
+}
+
+.empty-state-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.empty-state-description {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.empty-state-description strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.instructions-container p {
+  margin: 0 0 16px 0;
+}
+
+.instruction-manual {
+  text-align: left;
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  margin-top: 16px;
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+}
+
+.instruction-manual:hover {
+  background: var(--surface-elevated);
+}
+
+.instruction-manual summary {
+  font-weight: 600;
+  color: var(--text-primary);
+  outline: none;
+  font-size: 13px;
+  list-style: none; /* Hide default arrow */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.instruction-manual summary::-webkit-details-marker {
+  display: none;
+}
+
+.instruction-manual summary::before {
+  content: "▶";
+  font-size: 10px;
+  color: var(--text-tertiary);
+  transition: transform var(--duration-fast) ease;
+}
+
+.instruction-manual[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.instruction-manual ol {
+  margin: 12px 0 0 0;
+  padding-left: 20px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  cursor: default;
+}
+
+.instruction-manual li {
+  margin-bottom: 4px;
+}
+
+.instruction-manual strong {
+  color: var(--text-primary);
+}

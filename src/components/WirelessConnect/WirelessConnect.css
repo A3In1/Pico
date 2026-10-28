@@ -1,0 +1,393 @@
+/* ──────────────── Wireless Connect Panel ──────────────── */
+
+.wireless-connect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 32px;
+  gap: 24px;
+  animation: fadeIn 0.35s ease;
+  overflow-y: auto;
+}
+
+/* ── Tab Bar ── */
+
+.wireless-tabs {
+  display: flex;
+  gap: 2px;
+  background: var(--surface-sunken);
+  padding: 3px;
+  border-radius: var(--radius-md);
+}
+
+.wireless-tab {
+  padding: 8px 18px;
+  border: none;
+  border-radius: calc(var(--radius-md) - 2px);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+  white-space: nowrap;
+}
+
+.wireless-tab:hover {
+  color: var(--text-primary);
+}
+
+.wireless-tab.active {
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Tab Content ── */
+
+.wireless-tab-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 440px;
+  animation: fadeSlideIn 0.25s var(--ease-out) both;
+}
+
+/* ── Pairing Code Form ── */
+
+.pairing-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.pairing-form-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.pairing-form-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.form-field label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.form-field input {
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-sunken);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  outline: none;
+  transition: border-color var(--duration-fast) ease;
+}
+
+.form-field input:focus {
+  border-color: var(--accent);
+}
+
+.form-field input::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* ── Nearby Devices List ── */
+
+.nearby-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nearby-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.nearby-header h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.nearby-empty {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--text-tertiary);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.nearby-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--surface-elevated);
+  transition: all var(--duration-fast) ease;
+}
+
+.nearby-item:hover {
+  border-color: var(--accent);
+  background: var(--accent-glow);
+}
+
+.nearby-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nearby-item-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.nearby-item-addr {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+}
+
+/* ── Buttons ── */
+
+.wireless-btn {
+  padding: 9px 20px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wireless-btn-primary {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.wireless-btn-primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(77, 142, 255, 0.3);
+}
+
+.wireless-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.wireless-btn-secondary {
+  background: var(--surface-sunken);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.wireless-btn-secondary:hover {
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+}
+
+.wireless-btn-small {
+  padding: 5px 12px;
+  font-size: 12px;
+}
+
+.wireless-btn-icon {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--duration-fast) ease;
+}
+
+.wireless-btn-icon:hover {
+  background: var(--surface-sunken);
+  color: var(--text-primary);
+}
+
+.wireless-btn-icon.spinning svg {
+  animation: spin 1s linear infinite;
+}
+
+.btn-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* ── Error / Success Messages ── */
+
+.wireless-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  width: 100%;
+  animation: fadeSlideIn 0.2s ease;
+}
+
+.wireless-message.error {
+  background: rgba(255, 77, 106, 0.1);
+  color: var(--color-error);
+  border: 1px solid rgba(255, 77, 106, 0.2);
+}
+
+.wireless-message.success {
+  background: rgba(52, 199, 89, 0.1);
+  color: var(--color-success);
+  border: 1px solid rgba(52, 199, 89, 0.2);
+}
+
+/* ── "Go Wireless" button in DeviceBar ── */
+
+.go-wireless-btn {
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all var(--duration-fast) ease;
+}
+
+.go-wireless-btn:hover {
+  border-color: #8b5cf6;
+  color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.08);
+}
+
+/* ── Wi-Fi badge in DeviceBar ── */
+
+.connection-badge.wifi {
+  background: rgba(139, 92, 246, 0.12);
+  color: #8b5cf6;
+}
+
+/* ── Back to USB / Wireless toggle in empty state ── */
+
+.connection-toggle {
+  display: flex;
+  gap: 2px;
+  background: var(--surface-sunken);
+  padding: 3px;
+  border-radius: var(--radius-md);
+  margin-bottom: 8px;
+}
+
+.connection-toggle-btn {
+  padding: 7px 16px;
+  border: none;
+  border-radius: calc(var(--radius-md) - 2px);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.connection-toggle-btn:hover {
+  color: var(--text-primary);
+}
+
+.connection-toggle-btn.active {
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Segmented Control (Tabs) ── */
+.segmented-control {
+  display: flex;
+  background: var(--bg-inset);
+  border-radius: 8px;
+  padding: 4px;
+  width: 300px;
+  border: 1px solid var(--border);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.segment-btn {
+  flex: 1;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+
+.segment-btn:hover {
+  color: var(--text);
+}
+
+.segment-btn.active {
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+}

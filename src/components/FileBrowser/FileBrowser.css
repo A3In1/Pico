@@ -1,0 +1,404 @@
+/* ── Browser Layout ── */
+
+.file-browser {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ── Toolbar ── */
+
+.browser-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+}
+
+.nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.search-toggle-btn.active {
+  background: var(--accent-subtle);
+  color: var(--accent);
+}
+
+.refresh-btn {
+  margin-left: 4px;
+}
+
+/* ── Breadcrumb ── */
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 0 4px;
+}
+
+.breadcrumb-segment {
+  display: inline-flex;
+  align-items: center;
+}
+
+.breadcrumb-sep {
+  color: var(--text-tertiary);
+  font-size: 13px;
+  padding: 0 3px;
+}
+
+.breadcrumb-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 3px 5px;
+  border-radius: 4px;
+  transition: all var(--duration-fast) ease;
+}
+
+.breadcrumb-btn:hover {
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.breadcrumb-btn.current {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ── File List Container ── */
+
+.file-list-container {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.file-list-loading,
+.file-list-error,
+.file-list-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 12px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.loading-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.error-icon {
+  font-size: 28px;
+}
+
+.empty-icon {
+  font-size: 36px;
+  opacity: 0.5;
+}
+
+.clear-search-btn {
+  margin-top: 4px;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+}
+
+.clear-search-btn:hover {
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+}
+
+/* ── File List ── */
+
+.file-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── File Row ── */
+
+.file-row {
+  display: grid;
+  grid-template-columns: 32px 36px 1fr 80px 90px 150px;
+  align-items: center;
+  padding: 0 16px;
+  height: 36px;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background var(--duration-fast) ease;
+  cursor: default;
+  user-select: none;
+}
+
+.file-row:not(.file-header):hover {
+  background: var(--surface-elevated);
+}
+
+.file-row.is-dir {
+  cursor: pointer;
+}
+
+.file-row.is-selected {
+  background: var(--accent-subtle);
+}
+
+.file-row.is-selected:hover {
+  background: var(--row-selected-hover);
+}
+
+.file-header {
+  position: sticky;
+  top: 0;
+  background: var(--bg-secondary);
+  z-index: 1;
+  border-bottom: 1px solid var(--border);
+  height: 32px;
+}
+
+.file-header .file-col {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ── Sortable Columns ── */
+
+.file-header .sortable {
+  cursor: pointer;
+  transition: color var(--duration-fast) ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.file-header .sortable:hover {
+  color: var(--text-secondary);
+}
+
+.file-header .sortable.sorted {
+  color: var(--accent);
+}
+
+.sort-indicator {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+/* ── Checkbox ── */
+
+.file-checkbox-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.file-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.checkbox-visual {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--duration-fast) var(--ease-out);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.checkbox-visual:hover {
+  border-color: var(--text-tertiary);
+}
+
+.checkbox-visual.checked {
+  background: var(--accent);
+  border-color: var(--accent);
+  animation: checkboxPop 0.2s var(--ease-spring);
+}
+
+@keyframes checkboxPop {
+  0% {
+    transform: scale(0.85);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Header checkbox states */
+.file-header .checkbox-visual {
+  border-color: var(--text-tertiary);
+}
+
+.file-checkbox:indeterminate + .checkbox-visual {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.file-checkbox:checked + .checkbox-visual {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ── File Columns ── */
+
+.file-col {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-icon-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-type-icon {
+  font-size: 16px;
+}
+
+.file-name-col {
+  padding-right: 12px;
+}
+
+.file-name {
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.is-dir .file-name {
+  font-weight: 500;
+}
+
+.file-type-col {
+  padding-right: 8px;
+}
+
+.file-type-label {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.file-size-col {
+  text-align: right;
+  padding-right: 16px;
+  justify-content: flex-end;
+}
+
+.file-size {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.file-date-col {
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.file-date {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Status Bar ── */
+
+.browser-status-bar {
+  display: flex;
+  align-items: center;
+  padding: 4px 16px;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
+  font-size: 11px;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+/* ── Animations ── */
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.file-row { user-select: none; }
+.file-list-container.is-drop-target { box-shadow: inset 0 0 0 2px var(--accent-color, #4b8cf7); }
+.file-row.is-drop-folder { background: var(--bg-selected, rgba(75, 140, 247, 0.18)); outline: 2px solid var(--accent-color, #4b8cf7); outline-offset: -2px; }
+.file-list-container { position: relative; }
+.drop-hint { position: sticky; top: 0; height: 0; box-sizing: border-box; margin-bottom: -40px; min-height: 40px; z-index: 5; pointer-events: none; padding: 10px 16px; background: var(--bg-secondary); color: var(--text-primary); box-shadow: 0 2px 6px #0002; overflow-wrap: anywhere; }

@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pico</title>
+<meta name="description" content="Pico is a macOS app for moving files between your Android phone and your Mac, over USB or Wi-Fi.">
+<link rel="icon" href="icon.png">
+<style>
+:root {
+  --bg: #141416;
+  --fg: #f2f2f3;
+  --muted: #8e8e96;
+  --line: #2a2a2e;
+  --accent: #4d8eff;
+  --accent-hover: #6ba1ff;
+  --on-accent: #fff;
+  --code-bg: #1e1e22;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+* { box-sizing: border-box; }
+html { color-scheme: dark; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.55 var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 908px; margin: 0 auto; padding: 0 24px; }
+.rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
+.mono { font-family: var(--mono); }
+.muted { color: var(--muted); }
+
+header .wrap, footer .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+header .wrap { height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 17px; }
+.brand img { width: 28px; height: 28px; }
+nav { display: flex; gap: 24px; font-size: 14px; color: var(--muted); }
+
+.hero { padding: 80px 0 48px; }
+.eyebrow { font: 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 20px; }
+.hero-row, .cta-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; }
+h1 { font-size: clamp(36px, 7vw, 64px); line-height: 1.05; letter-spacing: -.03em; margin: 0; font-weight: 700; }
+.sub { margin: 20px 0 0; color: var(--muted); font-size: 17px; }
+.dl { flex: none; }
+.btn { display: inline-flex; align-items: center; gap: 14px; background: var(--accent); color: var(--on-accent); font-weight: 600; font-size: 15px; padding: 14px 18px; border-radius: 4px; }
+.btn:hover { background: var(--accent-hover); color: var(--on-accent); }
+.btn svg { width: 18px; height: 18px; }
+.dl small { display: block; margin-top: 10px; font-size: 12px; color: var(--muted); }
+
+.shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; }
+.caption { display: flex; justify-content: space-between; gap: 16px; margin-top: 12px; font-size: 13px; color: var(--muted); }
+
+.cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; padding: 64px 0; }
+.cols h3 { font-size: 16px; margin: 12px 0 6px; font-weight: 600; }
+.cols p { margin: 0; color: var(--muted); font-size: 14px; }
+.cols svg { width: 22px; height: 22px; color: var(--accent); }
+.num { font: 13px/1 var(--mono); color: var(--accent); }
+
+.steps { padding-top: 72px; }
+.steps-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+h2 { font-size: clamp(26px, 4vw, 36px); letter-spacing: -.02em; line-height: 1.15; margin: 0; font-weight: 700; }
+.label { font: 12px/1 var(--mono); letter-spacing: .12em; color: var(--muted); white-space: nowrap; }
+.note { font-size: 13px; color: var(--muted); padding: 0 0 64px; margin: 0; }
+.note code { font-family: var(--mono); font-size: 12px; background: var(--code-bg); border: 1px solid var(--line); border-radius: 4px; padding: 2px 6px; color: var(--fg); word-break: break-all; }
+
+.cta { padding-top: 72px; padding-bottom: 72px; }
+.cta p { margin: 10px 0 0; color: var(--muted); }
+
+footer .wrap { padding-top: 24px; padding-bottom: 32px; flex-wrap: wrap; }
+.foot-right { display: flex; gap: 20px; align-items: center; font-size: 13px; color: var(--muted); flex-wrap: wrap; }
+
+@media (max-width: 719px) {
+  .wrap { padding: 0 16px; }
+  .hero { padding: 48px 0 32px; }
+  .hero-row, .cta-row, .steps-head { flex-direction: column; align-items: flex-start; }
+  .cols { grid-template-columns: 1fr; gap: 28px; padding: 48px 0; }
+  .caption { flex-direction: column; gap: 4px; }
+  nav { gap: 16px; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></symbol>
+</svg>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#"><img src="icon.png" alt="">Pico</a>
+    <nav>
+      <a href="#getting-started">Getting started</a>
+      <a href="https://github.com/A3In1/Pico/releases/latest">Download ↓</a>
+    </nav>
+  </div>
+</header>
+<hr class="rule">
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Android ⇄ Mac / File transfer</p>
+    <div class="hero-row">
+      <div>
+        <h1>Your Android files.<br>On your Mac.</h1>
+        <p class="sub">Connect your Android phone over USB or Wi-Fi. Browse its storage and move files both ways.</p>
+      </div>
+      <div class="dl">
+        <a class="btn" href="https://github.com/A3In1/Pico/releases/latest">Download for macOS <svg aria-hidden="true"><use href="#i-dl"/></svg></a>
+        <small>For Mac · Apple Silicon &amp; Intel · macOS 11+</small>
+      </div>
+    </div>
+  </section>
+
+  <figure class="shot" style="margin:0">
+    <img src="screenshot.png" width="908" height="571" alt="Pico showing an Android phone's internal storage in a file list">
+    <figcaption class="caption"><span>A look inside the app · Pico</span><span class="mono">Vivo / Android 15 / USB</span></figcaption>
+  </figure>
+
+  <section class="cols">
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>
+      <h3>Browse phone storage</h3>
+      <p>See your folders and files in one familiar list, with size and modified dates.</p>
+    </div>
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="2.5"/><path d="M14 15l2 2"/></svg>
+      <h3>Find the files you need</h3>
+      <p>Jump to DCIM, Downloads, Pictures, Music, Documents and Movies.</p>
+    </div>
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h14l-4-4M20 16H6l4 4"/></svg>
+      <h3>Move files both ways</h3>
+      <p>Copy photos and documents to your Mac, or drag files from Finder onto your phone — over USB or Wi-Fi.</p>
+    </div>
+  </section>
+</main>
+
+<hr class="rule">
+
+<section class="wrap steps" id="getting-started">
+  <div class="steps-head">
+    <h2>From phone to Mac, in three steps.</h2>
+    <span class="label">GETTING STARTED</span>
+  </div>
+  <div class="cols">
+    <div><span class="num">01</span><h3>Connect</h3><p>Open Pico on your Mac and connect your Android phone with a USB cable, or pair it over Wi-Fi.</p></div>
+    <div><span class="num">02</span><h3>Browse</h3><p>Browse internal storage or use a shortcut to find the folder you need.</p></div>
+    <div><span class="num">03</span><h3>Transfer</h3><p>Choose the files you want and start the transfer. Drag and drop works too.</p></div>
+  </div>
+  <p class="note"><strong>First launch.</strong> Pico isn't notarized yet, so macOS may block it the first time. Open System Settings → Privacy &amp; Security → Open Anyway, or run <code>xattr -dr com.apple.quarantine /Applications/Pico.app</code>. On your phone, enable USB debugging (Settings → Developer options).</p>
+</section>
+
+<hr class="rule">
+
+<section class="wrap cta">
+  <div class="cta-row">
+    <div>
+      <h2>A little bridge between your devices.</h2>
+      <p>Your phone has the files. Bring them to your Mac with Pico.</p>
+    </div>
+    <div class="dl">
+      <a class="btn" href="https://github.com/A3In1/Pico/releases/latest">Download for macOS <svg aria-hidden="true"><use href="#i-dl"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#"><img src="icon.png" alt="">Pico</a>
+    <div class="foot-right">
+      <span>Android files. A Mac home.</span>
+      <a href="https://github.com/A3In1/Pico">GitHub</a>
+      <a href="https://github.com/A3In1/Pico/releases">Releases</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

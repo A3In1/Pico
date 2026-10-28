@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Light/dark app icon from icons/Assets.car (built from icons/Pico.icon); icon.icns stays as the fallback -->
+	<key>CFBundleIconName</key>
+	<string>Pico</string>
+</dict>
+</plist>

@@ -1,0 +1,261 @@
+/* ── Transfer Drawer ── */
+
+.transfer-drawer {
+  flex-shrink: 0;
+  background: var(--surface-elevated);
+  border-top: 1px solid var(--border);
+  max-height: 260px;
+  overflow: hidden;
+  animation: drawerSlideUp 0.3s var(--ease-spring) both;
+}
+
+@keyframes drawerSlideUp {
+  from {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    max-height: 260px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Drawer Header ── */
+
+.transfer-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-primary);
+}
+
+.transfer-summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.transfer-summary-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.transfer-summary-text.done {
+  color: var(--color-success);
+}
+
+.transfer-icon.spinning {
+  animation: spin 1s linear infinite;
+}
+
+.transfer-drawer-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.transfer-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+}
+
+.cancel-all-btn {
+  background: transparent;
+  color: var(--color-error);
+  border: 1px solid rgba(255, 77, 106, 0.3);
+}
+
+.cancel-all-btn:hover {
+  background: rgba(255, 77, 106, 0.1);
+}
+
+.close-btn {
+  background: transparent;
+  color: var(--text-tertiary);
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.close-btn:hover {
+  background: var(--surface-sunken);
+  color: var(--text-primary);
+}
+
+/* ── Transfer Items ── */
+
+.transfer-items {
+  overflow-y: auto;
+  max-height: 170px;
+  padding: 4px 0;
+}
+
+.transfer-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px;
+  transition: background var(--duration-fast) ease;
+}
+
+.transfer-item:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.transfer-item-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.transfer-pending-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-tertiary);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.transfer-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.transfer-item-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.transfer-item-name {
+  font-size: 12px;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.status-complete .transfer-item-name {
+  color: var(--text-secondary);
+}
+
+.status-failed .transfer-item-name,
+.status-cancelled .transfer-item-name {
+  color: var(--text-tertiary);
+  text-decoration: line-through;
+  text-decoration-color: var(--text-tertiary);
+}
+
+.transfer-item-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.transfer-progress-bar {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--surface-sunken);
+  overflow: hidden;
+}
+
+.transfer-progress-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+  transition: width 0.3s ease;
+}
+
+.transfer-progress-text {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.transfer-item-size {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+.transfer-item-error {
+  font-size: 10px;
+  color: var(--color-error);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.transfer-cancel-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+  flex-shrink: 0;
+  opacity: 0;
+}
+
+.transfer-item:hover .transfer-cancel-btn {
+  opacity: 1;
+}
+
+.transfer-cancel-btn:hover {
+  background: rgba(255, 77, 106, 0.1);
+  color: var(--color-error);
+}
+
+/* ── Animation ── */
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.transfer-overall-progress { display: flex; align-items: center; gap: 12px; padding: 7px 16px; border-bottom: 1px solid var(--border-subtle); font-size: 11px; color: var(--text-secondary); }
+.transfer-progress-bar { min-width: 50px; }
+.transfer-progress-fill { width: 0; }
+.transfer-progress-bar.is-indeterminate .transfer-progress-fill { width: 30%; animation: transferIndeterminate 1.25s linear infinite; }
+@keyframes transferIndeterminate { from { transform: translateX(-110%); } to { transform: translateX(440%); } }
+@media (prefers-reduced-motion: reduce) { .transfer-progress-fill { transition: none; } .transfer-progress-bar.is-indeterminate .transfer-progress-fill { animation: none; width: 100%; opacity: 0.45; } }
+.transfer-item-progress { flex-wrap: wrap; }
+.transfer-progress-text { white-space: normal; }

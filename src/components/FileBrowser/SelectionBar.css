@@ -1,0 +1,147 @@
+.selection-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: var(--surface-elevated);
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+  animation: selectionSlideUp 0.25s var(--ease-spring) both;
+  backdrop-filter: blur(12px);
+}
+
+@keyframes selectionSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.selection-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.selection-count-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 11px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  animation: badgePop 0.3s var(--ease-spring) both;
+}
+
+@keyframes badgePop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.selection-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.selection-dot {
+  margin: 0 4px;
+  color: var(--text-tertiary);
+}
+
+.selection-size {
+  color: var(--text-primary);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.selection-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.selection-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+  white-space: nowrap;
+}
+
+.deselect-btn {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.deselect-btn:hover {
+  background: var(--surface-sunken);
+  color: var(--text-primary);
+  border-color: var(--text-tertiary);
+}
+
+.download-btn {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 1px 3px rgba(77, 142, 255, 0.3);
+  animation: downloadPulse 2s ease-in-out infinite;
+}
+
+.download-btn:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 2px 8px rgba(77, 142, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.download-btn:active {
+  transform: translateY(0);
+}
+
+@keyframes downloadPulse {
+  0%, 100% {
+    box-shadow: 0 1px 3px rgba(77, 142, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 2px 12px rgba(77, 142, 255, 0.5);
+  }
+}
+
+.shortcut-hint {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  font-family: var(--font-family);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  border: none;
+  margin-left: 2px;
+}

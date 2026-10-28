@@ -1,0 +1,45 @@
+{
+  "name": "pico",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Pico: Android file transfer for macOS",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/A3In1/Pico.git"
+  },
+  "homepage": "https://a3in1.github.io/Pico/",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "test:backend": "cargo test --offline --manifest-path src-tauri/Cargo.toml",
+    "test:frontend": "vitest run",
+    "test:ui-rendering": "node tests/ui-rendering/run.mjs",
+    "test": "node tests/run.mjs",
+    "test:types": "tsc --project tsconfig.tests.json"
+  },
+  "dependencies": {
+    "@tanstack/react-virtual": "^3.14.13",
+    "@tauri-apps/api": "^2",
+    "@tauri-apps/plugin-dialog": "^2.8.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@tauri-apps/cli": "^2",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^6.0.2",
+    "jsdom": "^29.1.1",
+    "typescript": "~6.0.3",
+    "vite": "^8.0.16",
+    "vitest": "^5.0.3"
+  }
+}
